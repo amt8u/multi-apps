@@ -8,6 +8,7 @@ const apps = [
   { slug: 'emi-calculator', dir: resolve(projectRoot, 'apps/emi-calculator') },
   { slug: 'converter', dir: resolve(projectRoot, 'apps/converter') },
   { slug: 'random-name-generator', dir: resolve(projectRoot, 'apps/random-name-generator') },
+  { slug: 'qr-code-generator', dir: resolve(projectRoot, 'apps/qr-code-generator') },
 ]
 
 const run = (command, cwd = projectRoot) => {
