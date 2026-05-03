@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cybercafe Apps</title>
+    <meta
+      name="description"
+      content="Explore a mini apps directory with useful tools like an EMI calculator, unit converter, and random name generator. Search and filter apps quickly."
+    />
+    <meta name="keywords" content="cybercafe apps, emi calculator, unit converter, random name generator, utility tools" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f97316" />
+    <link rel="canonical" href="/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Cybercafe Apps Directory" />
+    <meta
+      property="og:description"
+      content="Browse practical mini apps with search and tag filters: EMI Calculator, Unit Converter, and Random Name Generator."
+    />
+    <meta property="og:url" content="/" />
+    <meta property="og:site_name" content="Cybercafe Apps" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Cybercafe Apps Directory" />
+    <meta
+      name="twitter:description"
+      content="A small collection of useful tools with quick search and filter support."
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Cybercafe Apps",
+        "url": "/",
+        "description": "A curated directory of mini utility apps.",
+        "hasPart": [
+          {
+            "@type": "WebApplication",
+            "name": "EMI Calculator",
+            "applicationCategory": "FinanceApplication",
+            "url": "/emi-calculator/"
+          },
+          {
+            "@type": "WebApplication",
+            "name": "Unit Converter",
+            "applicationCategory": "UtilitiesApplication",
+            "url": "/converter/"
+          },
+          {
+            "@type": "WebApplication",
+            "name": "Random Name Generator",
+            "applicationCategory": "UtilitiesApplication",
+            "url": "/random-name-generator/"
+          }
+        ]
+      }
+    </script>
+    <style>
+      :root {
+        font-family: "Segoe UI", sans-serif;
+        color: #1f2937;
+        background: #f8fafc;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: linear-gradient(180deg, #fff7ed 0%, #f8fafc 220px);
+      }
+
+      .page {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 30px 20px 48px;
+      }
+
+      .hero {
+        background: linear-gradient(140deg, #f97316, #fb7185);
+        color: #fff;
+        border-radius: 20px;
+        padding: 28px 24px;
+        box-shadow: 0 18px 35px rgba(249, 115, 22, 0.2);
+      }
+
+      .hero h1,
+      .hero p {
+        margin: 0;
+      }
+
+      .hero p {
+        margin-top: 10px;
+        max-width: 640px;
+        color: #ffedd5;
+      }
+
+      .controls {
+        margin-top: 18px;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 14px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .search-input {
+        width: 100%;
+        border: 1px solid #cbd5e1;
+        border-radius: 12px;
+        padding: 11px 12px;
+        font-size: 15px;
+        color: #0f172a;
+      }
+
+      .search-input:focus {
+        outline: 2px solid #fdba74;
+        border-color: #fb923c;
+      }
+
+      .filter-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .tag-filter {
+        border: 1px solid #cbd5e1;
+        background: #ffffff;
+        color: #334155;
+        border-radius: 999px;
+        padding: 6px 12px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .tag-filter.is-active {
+        border-color: #f97316;
+        background: #fff7ed;
+        color: #c2410c;
+      }
+
+      .app-grid {
+        list-style: none;
+        margin: 18px 0 0;
+        padding: 0;
+        display: grid;
+        gap: 14px;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+
+      .app-card {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 14px;
+        display: grid;
+        gap: 10px;
+        box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+      }
+
+      .app-title-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .app-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        background: #fff7ed;
+        border: 1px solid #fed7aa;
+        display: grid;
+        place-items: center;
+        font-size: 18px;
+      }
+
+      .app-title {
+        margin: 0;
+        font-size: 18px;
+      }
+
+      .app-title-link {
+        color: #0f172a;
+        text-decoration: none;
+      }
+
+      .app-title-link:hover {
+        color: #c2410c;
+      }
+
+      .app-description {
+        margin: 0;
+        color: #475569;
+        line-height: 1.45;
+        font-size: 14px;
+      }
+
+      .card-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .card-tag {
+        background: #f1f5f9;
+        color: #334155;
+        border-radius: 999px;
+        padding: 4px 10px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .empty-state {
+        margin-top: 16px;
+        background: #ffffff;
+        border: 1px dashed #cbd5e1;
+        border-radius: 12px;
+        padding: 14px;
+        color: #475569;
+      }
+
+      @media (max-width: 640px) {
+        .page {
+          padding: 20px 14px 40px;
+        }
+
+        .hero {
+          padding: 22px 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <h1>Cybercafe Apps Directory</h1>
+        <p>
+          A small collection of useful tools, styled like a lightweight blog homepage. Search quickly and filter by tags to find the right app.
+        </p>
+      </header>
+
+      <section class="controls" aria-label="App filters">
+        <input
+          id="searchInput"
+          class="search-input"
+          type="search"
+          placeholder="Search apps by title, description, or tag..."
+        />
+        <div class="filter-tags" id="tagFilters">
+          <button class="tag-filter is-active" data-tag="all" type="button">All</button>
+          <button class="tag-filter" data-tag="finance" type="button">Finance</button>
+          <button class="tag-filter" data-tag="utilities" type="button">Utilities</button>
+          <button class="tag-filter" data-tag="productivity" type="button">Productivity</button>
+          <button class="tag-filter" data-tag="fun" type="button">Fun</button>
+        </div>
+      </section>
+
+      <ul class="app-grid" id="appGrid">
+        <li class="app-card" data-title="EMI Calculator" data-description="Calculate monthly EMI, total interest, and total payment." data-tags="finance calculator loans">
+          <div class="app-title-row">
+            <div class="app-icon" aria-hidden="true">💰</div>
+            <h2 class="app-title"><a class="app-title-link" href="/emi-calculator/">EMI Calculator</a></h2>
+          </div>
+          <p class="app-description">Calculate monthly EMI, total interest, and full repayment amount for any loan.</p>
+          <div class="card-tags">
+            <span class="card-tag">Finance</span>
+            <span class="card-tag">Calculator</span>
+            <span class="card-tag">Loans</span>
+          </div>
+        </li>
+
+        <li class="app-card" data-title="Unit Converter" data-description="Convert values across common units." data-tags="utilities converter productivity">
+          <div class="app-title-row">
+            <div class="app-icon" aria-hidden="true">📐</div>
+            <h2 class="app-title"><a class="app-title-link" href="/converter/">Unit Converter</a></h2>
+          </div>
+          <p class="app-description">Convert between length, weight, and time units in a simple and fast interface.</p>
+          <div class="card-tags">
+            <span class="card-tag">Utilities</span>
+            <span class="card-tag">Converter</span>
+            <span class="card-tag">Productivity</span>
+          </div>
+        </li>
+
+        <li class="app-card" data-title="Random Name Generator" data-description="Generate random names instantly." data-tags="fun names creativity">
+          <div class="app-title-row">
+            <div class="app-icon" aria-hidden="true">🎲</div>
+            <h2 class="app-title"><a class="app-title-link" href="/random-name-generator/">Random Name Generator</a></h2>
+          </div>
+          <p class="app-description">Instantly create random names and keep a quick list of your recent generated picks.</p>
+          <div class="card-tags">
+            <span class="card-tag">Fun</span>
+            <span class="card-tag">Names</span>
+            <span class="card-tag">Creativity</span>
+          </div>
+        </li>
+      </ul>
+      <p id="emptyState" class="empty-state" hidden>No apps match your search/filter. Try another keyword or tag.</p>
+    </main>
+
+    <script>
+      const searchInput = document.getElementById('searchInput')
+      const tagFilters = document.getElementById('tagFilters')
+      const cards = Array.from(document.querySelectorAll('.app-card'))
+      const emptyState = document.getElementById('emptyState')
+      let activeTag = 'all'
+
+      const applyFilters = () => {
+        const query = searchInput.value.trim().toLowerCase()
+        let visibleCount = 0
+
+        cards.forEach((card) => {
+          const title = card.dataset.title.toLowerCase()
+          const description = card.dataset.description.toLowerCase()
+          const tags = card.dataset.tags.toLowerCase()
+          const matchesQuery = `${title} ${description} ${tags}`.includes(query)
+          const matchesTag = activeTag === 'all' || tags.includes(activeTag)
+          const isVisible = matchesQuery && matchesTag
+
+          card.hidden = !isVisible
+
+          if (isVisible) {
+            visibleCount += 1
+          }
+        })
+
+        emptyState.hidden = visibleCount > 0
+      }
+
+      tagFilters.addEventListener('click', (event) => {
+        const button = event.target.closest('.tag-filter')
+        if (!button) {
+          return
+        }
+
+        activeTag = button.dataset.tag
+        document.querySelectorAll('.tag-filter').forEach((tagButton) => {
+          tagButton.classList.toggle('is-active', tagButton === button)
+        })
+
+        applyFilters()
+      })
+
+      searchInput.addEventListener('input', applyFilters)
+    </script>
+  </body>
+</html>

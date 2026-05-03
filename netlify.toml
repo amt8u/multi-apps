@@ -1,0 +1,18 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[[redirects]]
+  from = "/emi-calculator/*"
+  to = "/emi-calculator/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/converter/*"
+  to = "/converter/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/random-name-generator/*"
+  to = "/random-name-generator/index.html"
+  status = 200
