@@ -60,6 +60,12 @@
             "name": "QR Code Generator",
             "applicationCategory": "UtilitiesApplication",
             "url": "/qr-code-generator/"
+          },
+          {
+            "@type": "WebApplication",
+            "name": "Quick Converter",
+            "applicationCategory": "FinanceApplication",
+            "url": "/quick-converter/"
           }
         ]
       }
@@ -322,6 +328,20 @@
             <span class="card-tag">Creator</span>
           </div>
         </li>
+
+        <li class="app-card" data-title="Quick Converter" data-description="Convert between Western (Million, Billion) and Indian (Lakhs, Crores) numerical systems." data-tags="utilities converter productivity finance">
+          <div class="app-title-row">
+            <div class="app-icon" aria-hidden="true">💱</div>
+            <h2 class="app-title"><a class="app-title-link" href="/quick-converter/">Quick Converter</a></h2>
+          </div>
+          <p class="app-description">Instantly convert between Western and Indian numerical systems. Million to Lakh, Billion to Crore, and more.</p>
+          <div class="card-tags">
+            <span class="card-tag">Utilities</span>
+            <span class="card-tag">Converter</span>
+            <span class="card-tag">Productivity</span>
+            <span class="card-tag">Finance</span>
+          </div>
+        </li>
       </ul>
       <p id="emptyState" class="empty-state" hidden>No apps match your search/filter. Try another keyword or tag.</p>
     </main>
@@ -340,9 +360,9 @@
         cards.forEach((card) => {
           const title = card.dataset.title.toLowerCase()
           const description = card.dataset.description.toLowerCase()
-          const tags = card.dataset.tags.toLowerCase()
-          const matchesQuery = `${title} ${description} ${tags}`.includes(query)
-          const matchesTag = activeTag === 'all' || tags.includes(activeTag)
+          const tagsArray = card.dataset.tags.toLowerCase().split(' ')
+          const matchesQuery = `${title} ${description} ${card.dataset.tags.toLowerCase()}`.includes(query)
+          const matchesTag = activeTag === 'all' || tagsArray.includes(activeTag)
           const isVisible = matchesQuery && matchesTag
 
           card.hidden = !isVisible

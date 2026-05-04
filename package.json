@@ -4,11 +4,12 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "install:apps": "npm install --prefix apps/emi-calculator && npm install --prefix apps/converter && npm install --prefix apps/random-name-generator && npm install --prefix apps/qr-code-generator",
+    "install:apps": "npm install --prefix apps/emi-calculator && npm install --prefix apps/converter && npm install --prefix apps/random-name-generator && npm install --prefix apps/qr-code-generator && npm install --prefix apps/quick-converter",
     "build": "node scripts/build-netlify.mjs",
     "dev:emi": "npm run dev --prefix apps/emi-calculator",
     "dev:converter": "npm run dev --prefix apps/converter",
     "dev:names": "npm run dev --prefix apps/random-name-generator",
-    "dev:qr": "npm run dev --prefix apps/qr-code-generator"
+    "dev:qr": "npm run dev --prefix apps/qr-code-generator",
+    "dev:quick-converter": "npm run dev --prefix apps/quick-converter"
   }
 }
