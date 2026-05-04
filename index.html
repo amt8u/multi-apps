@@ -66,6 +66,12 @@
             "name": "Quick Converter",
             "applicationCategory": "FinanceApplication",
             "url": "/quick-converter/"
+          },
+          {
+            "@type": "WebApplication",
+            "name": "EMI Calculator 2.0",
+            "applicationCategory": "FinanceApplication",
+            "url": "/emi-calculator-2/"
           }
         ]
       }
@@ -239,6 +245,10 @@
         color: #475569;
       }
 
+      [hidden] {
+        display: none !important;
+      }
+
       @media (max-width: 640px) {
         .page {
           padding: 20px 14px 40px;
@@ -342,54 +352,78 @@
             <span class="card-tag">Finance</span>
           </div>
         </li>
+
+        <li class="app-card" data-title="EMI Calculator 2.0" data-description="Advanced EMI calculator that calculates any missing value from any 3 entered parameters." data-tags="finance calculator emi loan">
+          <div class="app-title-row">
+            <div class="app-icon" aria-hidden="true">🏦</div>
+            <h2 class="app-title"><a class="app-title-link" href="/emi-calculator-2/">EMI Calculator 2.0</a></h2>
+          </div>
+          <p class="app-description">Enter any 3 values (Principal, Rate, Time, EMI) to calculate the 4th automatically. Perfect for flexible loan planning.</p>
+          <div class="card-tags">
+            <span class="card-tag">Finance</span>
+            <span class="card-tag">Calculator</span>
+            <span class="card-tag">EMI</span>
+            <span class="card-tag">Loan</span>
+          </div>
+        </li>
       </ul>
       <p id="emptyState" class="empty-state" hidden>No apps match your search/filter. Try another keyword or tag.</p>
     </main>
 
     <script>
-      const searchInput = document.getElementById('searchInput')
-      const tagFilters = document.getElementById('tagFilters')
-      const cards = Array.from(document.querySelectorAll('.app-card'))
-      const emptyState = document.getElementById('emptyState')
-      let activeTag = 'all'
+      document.addEventListener('DOMContentLoaded', () => {
+        const searchInput = document.getElementById('searchInput')
+        const tagFilters = document.getElementById('tagFilters')
+        const cards = Array.from(document.querySelectorAll('.app-card'))
+        const emptyState = document.getElementById('emptyState')
+        let activeTag = 'all'
 
-      const applyFilters = () => {
-        const query = searchInput.value.trim().toLowerCase()
-        let visibleCount = 0
-
-        cards.forEach((card) => {
-          const title = card.dataset.title.toLowerCase()
-          const description = card.dataset.description.toLowerCase()
-          const tagsArray = card.dataset.tags.toLowerCase().split(' ')
-          const matchesQuery = `${title} ${description} ${card.dataset.tags.toLowerCase()}`.includes(query)
-          const matchesTag = activeTag === 'all' || tagsArray.includes(activeTag)
-          const isVisible = matchesQuery && matchesTag
-
-          card.hidden = !isVisible
-
-          if (isVisible) {
-            visibleCount += 1
-          }
-        })
-
-        emptyState.hidden = visibleCount > 0
-      }
-
-      tagFilters.addEventListener('click', (event) => {
-        const button = event.target.closest('.tag-filter')
-        if (!button) {
+        if (!searchInput || !tagFilters || cards.length === 0 || !emptyState) {
+          console.error('Filter elements not found')
           return
         }
 
-        activeTag = button.dataset.tag
-        document.querySelectorAll('.tag-filter').forEach((tagButton) => {
-          tagButton.classList.toggle('is-active', tagButton === button)
+        const applyFilters = () => {
+          const query = searchInput.value.trim().toLowerCase()
+          let visibleCount = 0
+
+          cards.forEach((card) => {
+            const title = card.dataset.title.toLowerCase()
+            const description = card.dataset.description.toLowerCase()
+            const tagsArray = card.dataset.tags.toLowerCase().split(' ')
+            const matchesQuery = `${title} ${description} ${card.dataset.tags.toLowerCase()}`.includes(query)
+            const matchesTag = activeTag === 'all' || tagsArray.includes(activeTag)
+            const isVisible = matchesQuery && matchesTag
+
+            card.hidden = !isVisible
+
+            if (isVisible) {
+              visibleCount += 1
+            }
+          })
+
+          emptyState.hidden = visibleCount > 0
+        }
+
+        tagFilters.addEventListener('click', (event) => {
+          const button = event.target.closest('.tag-filter')
+          if (!button) {
+            return
+          }
+
+          activeTag = button.dataset.tag
+          document.querySelectorAll('.tag-filter').forEach((tagButton) => {
+            tagButton.classList.toggle('is-active', tagButton === button)
+          })
+
+          applyFilters()
         })
 
+        searchInput.addEventListener('input', applyFilters)
+
+        // Run filters on page load to ensure correct initial state
         applyFilters()
       })
-
-      searchInput.addEventListener('input', applyFilters)
     </script>
   </body>
 </html>
