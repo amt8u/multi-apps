@@ -425,5 +425,60 @@
         applyFilters()
       })
     </script>
+
+    <footer class="site-footer">
+      <div class="footer-content">
+        <div class="footer-info">
+          <p>&copy; 2026 Cybercafe Apps. Built with React & Vite.</p>
+        </div>
+        <div class="footer-status">
+          <a href="https://app.netlify.com/sites/ca490f88-04a9-4bc2-b15e-5009e1307ddf/deploys" target="_blank" rel="noopener noreferrer" class="build-status">
+            <img src="https://api.netlify.com/api/v1/badges/ca490f88-04a9-4bc2-b15e-5009e1307ddf/deploy-status" alt="Netlify Deploy Status" />
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <style>
+      .site-footer {
+        background: #f8fafc;
+        border-top: 1px solid #e2e8f0;
+        margin-top: 4rem;
+        padding: 2rem 0;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .footer-info p {
+        margin: 0;
+        color: #64748b;
+        font-size: 0.875rem;
+      }
+
+      .build-status img {
+        height: 20px;
+        transition: opacity 0.2s ease;
+      }
+
+      .build-status:hover img {
+        opacity: 0.8;
+      }
+
+      @media (max-width: 640px) {
+        .footer-content {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+    </style>
   </body>
 </html>
