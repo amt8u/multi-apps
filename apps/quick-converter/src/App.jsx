@@ -81,9 +81,9 @@ function App() {
   const [activeTab, setActiveTab] = useState('numerical')
   const [inputValue, setInputValue] = useState('')
   const [fromUnit, setFromUnit] = useState('western')
-  const [fromScale, setFromScale] = useState(1000000) // Million
+  const [fromScale, setFromScale] = useState(1) // One
   const [toUnit, setToUnit] = useState('indian')
-  const [toScale, setToScale] = useState(10000000) // Crore
+  const [toScale, setToScale] = useState(1) // One
   const [result, setResult] = useState('')
   const [customRates, setCustomRates] = useState({
     'million-to-lakh': 10,
